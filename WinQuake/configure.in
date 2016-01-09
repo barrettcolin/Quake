@@ -12,14 +12,15 @@ dnl Check for tools
 
 AC_PROG_MAKE_SET
 AC_PROG_CC
+AM_PROG_AS
 AC_PROG_INSTALL
 
 dnl The alpha architecture needs special flags for binary portability
 AC_CANONICAL_TARGET
 case "$target" in
     i686-*-linux*)
-        CFLAGS="-g -mpentiumpro -O6 -ffast-math -funroll-loops -fomit-frame-pointer -fexpensive-optimizations"
-        #CFLAGS="-g -mpentiumpro -O6 -ffast-math -funroll-loops -fexpensive-optimizations"
+        CFLAGS="-g -mtune=atom -Ofast -funroll-loops -fomit-frame-pointer"
+        #CFLAGS="-g -mtune=atom -Ofast -funroll-loops"
         ;;
     alpha*-*-linux*)
         CFLAGS="$CFLAGS -mcpu=ev4 -Wa,-mall"
@@ -71,9 +72,11 @@ AC_ARG_ENABLE(asm,
                   , enable_asm=no)
 if test x$enable_asm = xyes; then
     CFLAGS="$CFLAGS -DUSE_ASM"
+    CCASFLAGS="$CCASFLAGS -DUSE_ASM"
 fi
 
 CFLAGS="$CFLAGS -DELF"
+CCASFLAGS="$CCASFLAGS -DELF"
 
 # Finally create all the generated files
 AC_OUTPUT([
