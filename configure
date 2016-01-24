@@ -581,6 +581,7 @@ PACKAGE_STRING='sdlquake 1.0.9'
 PACKAGE_BUGREPORT=''
 PACKAGE_URL=''
 
+ac_unique_file="WinQuake/README.SDL"
 ac_subst_vars='am__EXEEXT_FALSE
 am__EXEEXT_TRUE
 LTLIBOBJS
@@ -1909,8 +1910,9 @@ ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $
 ac_compiler_gnu=$ac_cv_c_compiler_gnu
 
 
+
 ac_aux_dir=
-for ac_dir in "$srcdir" "$srcdir/.." "$srcdir/../.."; do
+for ac_dir in build-aux "$srcdir"/build-aux; do
   if test -f "$ac_dir/install-sh"; then
     ac_aux_dir=$ac_dir
     ac_install_sh="$ac_aux_dir/install-sh -c"
@@ -1926,7 +1928,7 @@ for ac_dir in "$srcdir" "$srcdir/.." "$srcdir/../.."; do
   fi
 done
 if test -z "$ac_aux_dir"; then
-  as_fn_error $? "cannot find install-sh, install.sh, or shtool in \"$srcdir\" \"$srcdir/..\" \"$srcdir/../..\"" "$LINENO" 5
+  as_fn_error $? "cannot find install-sh, install.sh, or shtool in build-aux \"$srcdir\"/build-aux" "$LINENO" 5
 fi
 
 # These three variables are undocumented and unsupported,
@@ -2522,7 +2524,6 @@ MAKEINFO=${MAKEINFO-"${am_missing_run}makeinfo"}
 AMTAR='$${TAR-tar}'
 
 am__tar='$${TAR-tar} chof - "$$tardir"' am__untar='$${TAR-tar} xf -'
-
 
 
 
@@ -3563,6 +3564,7 @@ else
 fi
 
 
+
 # By default we simply use the C compiler to build assembly code.
 
 test "${CCAS+set}" = set || CCAS=$CC
@@ -3697,10 +3699,9 @@ fi
 
 
 
-
 case "$target" in
     i686-*-linux*)
-        CFLAGS="-g -mtune=atom -Ofast -funroll-loops -fomit-frame-pointer"
+        CFLAGS="$CFLAGS -mtune=atom -Ofast -funroll-loops -fomit-frame-pointer"
         ;;
     alpha*-*-linux*)
         CFLAGS="$CFLAGS -mcpu=ev4 -Wa,-mall"

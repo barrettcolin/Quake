@@ -1,25 +1,27 @@
 AC_INIT([sdlquake], [1.0.9])
-AC_CANONICAL_HOST
+AC_CONFIG_SRCDIR([WinQuake/README.SDL])
+AC_CONFIG_AUX_DIR([build-aux])
 AC_CANONICAL_TARGET
 
 AM_INIT_AUTOMAKE([foreign])
-
 AM_MAINTAINER_MODE
 
 AC_PROG_MAKE_SET
 AC_PROG_CC
-AM_PROG_AS
 AC_PROG_INSTALL
+AM_PROG_AS
 
+dnl set CFLAGS
 case "$target" in
     i686-*-linux*)
-        CFLAGS="-g -mtune=atom -Ofast -funroll-loops -fomit-frame-pointer"
+        CFLAGS="$CFLAGS -mtune=atom -Ofast -funroll-loops -fomit-frame-pointer"
         ;;
     alpha*-*-linux*)
         CFLAGS="$CFLAGS -mcpu=ev4 -Wa,-mall"
         ;;
 esac
 
+dnl set MATHLIB and INETLIB
 case "$target" in
     *-*-mingw32*)
         MATHLIB=""
@@ -38,6 +40,7 @@ esac
 AC_SUBST(MATHLIB)
 AC_SUBST(INETLIB)
 
+dnl find SDL
 SDL_VERSION=1.0.1
 AM_PATH_SDL($SDL_VERSION,
             :,
@@ -46,6 +49,7 @@ AM_PATH_SDL($SDL_VERSION,
 CFLAGS="$CFLAGS $SDL_CFLAGS -DSDL"
 LIBS="$LIBS $SDL_LIBS"
 
+dnl set icon
 case "$target" in
     *-*-mingw32*)
         cp ico_o ico.o
@@ -58,6 +62,7 @@ esac
 
 AC_SUBST(ICONOBJ)
 
+dnl --enable-asm
 AC_ARG_ENABLE(asm,
 [  --enable-asm            enable i686 assembly routines [default=no]],
                   , enable_asm=no)
