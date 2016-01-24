@@ -63,14 +63,18 @@ esac
 AC_SUBST(ICONOBJ)
 
 dnl --enable-asm
-AC_ARG_ENABLE(asm,
-[  --enable-asm            enable i686 assembly routines [default=no]],
-                  , enable_asm=no)
+AC_ARG_ENABLE([asm],
+    [AS_HELP_STRING([--enable-asm], 
+        [enable x86 assembly routines (default=no)]),
+        ,
+        [enable_asm=no]])
+
 if test x$enable_asm = xyes; then
     CFLAGS="$CFLAGS -DUSE_ASM"
     CCASFLAGS="$CCASFLAGS -DUSE_ASM"
 fi
 
+dnl ELF build
 CFLAGS="$CFLAGS -DELF"
 CCASFLAGS="$CCASFLAGS -DELF"
 

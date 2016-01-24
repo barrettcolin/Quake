@@ -1334,7 +1334,9 @@ Optional Features:
   --disable-dependency-tracking  speeds up one-time build
   --enable-dependency-tracking   do not reject slow dependency extractors
   --disable-sdltest       Do not try to compile and run a test SDL program
-  --enable-asm            enable i686 assembly routines default=no
+  --enable-asm            enable x86 assembly routines (default=no),
+        ,
+        enable_asm=no
 
 Optional Packages:
   --with-PACKAGE[=ARG]    use PACKAGE [ARG=yes]
@@ -4002,9 +4004,8 @@ esac
 # Check whether --enable-asm was given.
 if test "${enable_asm+set}" = set; then :
   enableval=$enable_asm;
-else
-  enable_asm=no
 fi
+
 
 if test x$enable_asm = xyes; then
     CFLAGS="$CFLAGS -DUSE_ASM"
