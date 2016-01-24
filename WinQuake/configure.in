@@ -3,6 +3,7 @@ AC_INIT([sdlquake], [1.0.9])
 
 dnl Setup for automake
 AM_INIT_AUTOMAKE([foreign])
+AM_MAINTAINER_MODE
 
 dnl Detect the canonical target build environment
 AC_CANONICAL_HOST
