@@ -1,5 +1,7 @@
 #include "asm_i386.h"
 
+#if id386
+
 .data
 fpenv:	.long	0, 0, 0, 0, 0, 0, 0, 0
 
@@ -74,4 +76,6 @@ qqq:
 
 	ret
 #endif
+
+#endif	// id386
 

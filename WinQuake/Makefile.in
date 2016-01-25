@@ -65,33 +65,33 @@ CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
-am__objects_1 = snd_mixa.$(OBJEXT) sys_dosa.$(OBJEXT) d_draw.$(OBJEXT) \
-	d_draw16.$(OBJEXT) d_parta.$(OBJEXT) d_polysa.$(OBJEXT) \
-	d_scana.$(OBJEXT) d_spr8.$(OBJEXT) d_varsa.$(OBJEXT) \
-	math.$(OBJEXT) r_aclipa.$(OBJEXT) r_aliasa.$(OBJEXT) \
-	r_drawa.$(OBJEXT) r_edgea.$(OBJEXT) surf16.$(OBJEXT) \
+am__objects_1 = snd_mixa.$(OBJEXT) sys_dosa.$(OBJEXT) dosasm.$(OBJEXT) \
+	d_copy.$(OBJEXT) d_draw.$(OBJEXT) d_draw16.$(OBJEXT) \
+	d_parta.$(OBJEXT) d_polysa.$(OBJEXT) d_scana.$(OBJEXT) \
+	d_spr8.$(OBJEXT) d_varsa.$(OBJEXT) math.$(OBJEXT) \
+	r_aclipa.$(OBJEXT) r_aliasa.$(OBJEXT) r_drawa.$(OBJEXT) \
+	r_edgea.$(OBJEXT) r_varsa.$(OBJEXT) surf16.$(OBJEXT) \
 	surf8.$(OBJEXT) worlda.$(OBJEXT)
 am__objects_2 = d_vars.$(OBJEXT) nonintel.$(OBJEXT)
 am_sdlquake_OBJECTS = cd_sdl.$(OBJEXT) chase.$(OBJEXT) \
 	cl_demo.$(OBJEXT) cl_input.$(OBJEXT) cl_main.$(OBJEXT) \
 	cl_parse.$(OBJEXT) cl_tent.$(OBJEXT) cmd.$(OBJEXT) \
 	common.$(OBJEXT) console.$(OBJEXT) crc.$(OBJEXT) \
-	cvar.$(OBJEXT) d_copy.$(OBJEXT) d_edge.$(OBJEXT) \
-	d_fill.$(OBJEXT) d_init.$(OBJEXT) d_modech.$(OBJEXT) \
-	d_part.$(OBJEXT) d_polyse.$(OBJEXT) d_scan.$(OBJEXT) \
-	d_sky.$(OBJEXT) d_sprite.$(OBJEXT) d_surf.$(OBJEXT) \
-	d_zpoint.$(OBJEXT) dosasm.$(OBJEXT) draw.$(OBJEXT) \
-	host.$(OBJEXT) host_cmd.$(OBJEXT) keys.$(OBJEXT) \
-	mathlib.$(OBJEXT) menu.$(OBJEXT) model.$(OBJEXT) \
-	net_bsd.$(OBJEXT) net_dgrm.$(OBJEXT) net_loop.$(OBJEXT) \
-	net_main.$(OBJEXT) net_udp.$(OBJEXT) net_vcr.$(OBJEXT) \
-	net_wso.$(OBJEXT) pr_cmds.$(OBJEXT) pr_edict.$(OBJEXT) \
-	pr_exec.$(OBJEXT) r_aclip.$(OBJEXT) r_alias.$(OBJEXT) \
-	r_bsp.$(OBJEXT) r_draw.$(OBJEXT) r_edge.$(OBJEXT) \
-	r_efrag.$(OBJEXT) r_light.$(OBJEXT) r_main.$(OBJEXT) \
-	r_misc.$(OBJEXT) r_part.$(OBJEXT) r_sky.$(OBJEXT) \
-	r_sprite.$(OBJEXT) r_surf.$(OBJEXT) r_vars.$(OBJEXT) \
-	r_varsa.$(OBJEXT) sbar.$(OBJEXT) screen.$(OBJEXT) \
+	cvar.$(OBJEXT) d_edge.$(OBJEXT) d_fill.$(OBJEXT) \
+	d_init.$(OBJEXT) d_modech.$(OBJEXT) d_part.$(OBJEXT) \
+	d_polyse.$(OBJEXT) d_scan.$(OBJEXT) d_sky.$(OBJEXT) \
+	d_sprite.$(OBJEXT) d_surf.$(OBJEXT) d_zpoint.$(OBJEXT) \
+	draw.$(OBJEXT) host.$(OBJEXT) host_cmd.$(OBJEXT) \
+	keys.$(OBJEXT) mathlib.$(OBJEXT) menu.$(OBJEXT) \
+	model.$(OBJEXT) net_bsd.$(OBJEXT) net_dgrm.$(OBJEXT) \
+	net_loop.$(OBJEXT) net_main.$(OBJEXT) net_udp.$(OBJEXT) \
+	net_vcr.$(OBJEXT) net_wso.$(OBJEXT) pr_cmds.$(OBJEXT) \
+	pr_edict.$(OBJEXT) pr_exec.$(OBJEXT) r_aclip.$(OBJEXT) \
+	r_alias.$(OBJEXT) r_bsp.$(OBJEXT) r_draw.$(OBJEXT) \
+	r_edge.$(OBJEXT) r_efrag.$(OBJEXT) r_light.$(OBJEXT) \
+	r_main.$(OBJEXT) r_misc.$(OBJEXT) r_part.$(OBJEXT) \
+	r_sky.$(OBJEXT) r_sprite.$(OBJEXT) r_surf.$(OBJEXT) \
+	r_vars.$(OBJEXT) sbar.$(OBJEXT) screen.$(OBJEXT) \
 	snd_dma.$(OBJEXT) snd_mem.$(OBJEXT) snd_mix.$(OBJEXT) \
 	snd_sdl.$(OBJEXT) sv_main.$(OBJEXT) sv_move.$(OBJEXT) \
 	sv_phys.$(OBJEXT) sv_user.$(OBJEXT) sys_sdl.$(OBJEXT) \
@@ -255,7 +255,6 @@ sdlquake_SOURCES = \
 	crc.h			\
 	cvar.c			\
 	cvar.h			\
-	d_copy.S		\
 	d_edge.c		\
 	d_fill.c		\
 	d_iface.h		\
@@ -270,7 +269,6 @@ sdlquake_SOURCES = \
 	d_sprite.c		\
 	d_surf.c		\
 	d_zpoint.c		\
-	dosasm.S		\
 	dosisms.h		\
 	draw.c			\
 	draw.h			\
@@ -325,7 +323,6 @@ sdlquake_SOURCES = \
 	r_sprite.c		\
 	r_surf.c		\
 	r_vars.c		\
-	r_varsa.S		\
 	render.h		\
 	resource.h		\
 	sbar.c			\
@@ -363,6 +360,8 @@ sdlquake_SOURCES = \
 X86_SRCS = \
 	snd_mixa.S		\
 	sys_dosa.S		\
+	dosasm.S		\
+	d_copy.S		\
 	d_draw.S		\
 	d_draw16.S		\
 	d_parta.S		\
@@ -375,6 +374,7 @@ X86_SRCS = \
 	r_aliasa.S		\
 	r_drawa.S		\
 	r_edgea.S		\
+	r_varsa.S		\
 	surf16.S		\
 	surf8.S			\
 	worlda.S

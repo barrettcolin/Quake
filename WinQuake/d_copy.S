@@ -7,6 +7,8 @@
 #include "quakeasm.h"
 #include "asm_draw.h"
 
+#if id386
+
 	.data
 
 LCopyWidth:		.long	0
@@ -146,4 +148,6 @@ LLRowLoop:
 	popl	%ebp				// restore the caller's stack frame
 
 	ret
+
+#endif	// id386
 
