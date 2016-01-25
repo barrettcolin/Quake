@@ -55,8 +55,7 @@ target_triplet = @target@
 bin_PROGRAMS = sdlquake$(EXEEXT)
 subdir = WinQuake
 DIST_COMMON = $(srcdir)/Makefile.am $(srcdir)/Makefile.in COPYING \
-	config.guess config.sub depcomp install-sh missing \
-	mkinstalldirs
+	config.guess config.sub install-sh missing mkinstalldirs
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/configure.ac
 am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
