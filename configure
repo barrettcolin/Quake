@@ -3705,7 +3705,7 @@ case "$target" in
     i686-*-linux*)
         CFLAGS="$CFLAGS -mtune=atom -Ofast -funroll-loops -fomit-frame-pointer"
         ;;
-    armv6-*-linux*)
+    armv6l-*-linux*)
         CFLAGS="$CFLAGS -mcpu=arm1176jzf-s -mfpu=vfp -mfloat-abi=hard -Ofast -funroll-loops -fomit-frame-pointer"
         ;;
     alpha*-*-linux*)
