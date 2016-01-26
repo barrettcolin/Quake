@@ -14,10 +14,10 @@ AM_PROG_AS
 dnl set CFLAGS
 case "$target" in
     i686-*-linux*)
-        CFLAGS="-mtune=atom -Ofast -funroll-loops -fomit-frame-pointer"
+        CFLAGS="-g -mtune=atom -Ofast -funroll-loops -fomit-frame-pointer"
         ;;
     armv6l-*-linux*)
-        CFLAGS="-mcpu=arm1176jzf-s -mfpu=vfp -mfloat-abi=hard -Ofast -funroll-loops -fomit-frame-pointer"
+        CFLAGS="-g -mcpu=arm1176jzf-s -mfpu=vfp -mfloat-abi=hard -Ofast -funroll-loops -fomit-frame-pointer"
         ;;
     alpha*-*-linux*)
         CFLAGS="$CFLAGS -mcpu=ev4 -Wa,-mall"
