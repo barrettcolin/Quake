@@ -1,17 +1,20 @@
-#include <unistd.h>
-#include <signal.h>
 #include <stdlib.h>
 #include <limits.h>
-#include <sys/time.h>
-#include <sys/types.h>
-#include <unistd.h>
-#include <fcntl.h>
 #include <stdarg.h>
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
 #include <errno.h>
+#include <direct.h>
+
+#include "SDL/SDL.h"
+
 #ifndef __WIN32__
+#include <unistd.h>
+#include <signal.h>
+#include <fcntl.h>
+#include <sys/time.h>
+#include <sys/types.h>
 #include <sys/ipc.h>
 #include <sys/shm.h>
 #include <sys/stat.h>
@@ -288,32 +291,7 @@ void Sys_DebugLog(char *file, char *fmt, ...)
 
 double Sys_FloatTime (void)
 {
-#ifdef __WIN32__
-
-	static int starttime = 0;
-
-	if ( ! starttime )
-		starttime = clock();
-
-	return (clock()-starttime)*1.0/1024;
-
-#else
-
-    struct timeval tp;
-    struct timezone tzp; 
-    static int      secbase; 
-    
-    gettimeofday(&tp, &tzp);  
-
-    if (!secbase)
-    {
-        secbase = tp.tv_sec;
-        return tp.tv_usec/1000000.0;
-    }
-
-    return (tp.tv_sec - secbase) + tp.tv_usec/1000000.0;
-
-#endif
+    return SDL_GetTicks() * 0.001;
 }
 
 // =======================================================================
