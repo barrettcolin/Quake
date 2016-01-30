@@ -41,13 +41,13 @@ void Sys_DebugNumber(int y, int val)
 
 void Sys_Printf (char *fmt, ...)
 {
-	va_list		argptr;
-	char		text[1024];
+	//va_list		argptr;
+	//char		text[1024];
 	
-	va_start (argptr,fmt);
-	vsprintf (text,fmt,argptr);
-	va_end (argptr);
-	fprintf(stderr, "%s", text);
+	//va_start (argptr,fmt);
+	//vsprintf (text,fmt,argptr);
+	//va_end (argptr);
+	//fprintf(stderr, "%s", text);
 	
 	//Con_Print (text);
 }
