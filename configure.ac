@@ -44,7 +44,7 @@ AC_SUBST(MATHLIB)
 AC_SUBST(INETLIB)
 
 dnl find SDL
-SDL_VERSION=1.0.1
+SDL_VERSION=1.2.15
 AM_PATH_SDL($SDL_VERSION,
             :,
             AC_MSG_ERROR([*** SDL version $SDL_VERSION not found!])
