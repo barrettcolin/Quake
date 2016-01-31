@@ -574,6 +574,8 @@ void S_ClearBuffer (void)
 	else
 		clear = 0;
 
+	SNDDMA_BeginPainting();
+
 #ifdef _WIN32
 	if (pDSBuf)
 	{
@@ -611,6 +613,8 @@ void S_ClearBuffer (void)
 	{
 		Q_memset(shm->buffer, clear, shm->samples * shm->samplebits/8);
 	}
+
+	SNDDMA_Submit();
 }
 
 
@@ -857,13 +861,13 @@ void S_ExtraUpdate (void)
 
 void S_Update_(void)
 {
-#ifndef SDL
-
 	unsigned        endtime;
 	int				samps;
 	
 	if (!sound_started || (snd_blocked > 0))
 		return;
+
+	SNDDMA_BeginPainting();
 
 // Updates DMA time
 	GetSoundtime();
@@ -903,7 +907,6 @@ void S_Update_(void)
 	S_PaintChannels (endtime);
 
 	SNDDMA_Submit ();
-#endif /* ! SDL */
 }
 
 /*

@@ -3,25 +3,50 @@
 #include "SDL/SDL.h"
 #include "quakedef.h"
 
-static dma_t the_shm;
 static int snd_inited;
+
+static int dma_sample_bytes, dma_pos, dma_size;
+static unsigned char *dma_buffer;
 
 extern int desired_speed;
 extern int desired_bits;
 
-static void paint_audio(void *unused, Uint8 *stream, int len)
+static unsigned next_power_of_two(unsigned n)
 {
-	if ( shm ) {
-		shm->buffer = stream;
-		shm->samplepos += len/(shm->samplebits/8)/2;
-		// Check for samplepos overflow?
-		S_PaintChannels (shm->samplepos);
+	n--;
+	n |= n >> 1;
+	n |= n >> 2;
+	n |= n >> 4;
+	n |= n >> 8;
+	n |= n >> 16;
+	n++;
+
+	return n;
+}
+
+static void paint_audio(void *unused, Uint8 *stream, int num_bytes)
+{
+	int current_byte = dma_pos * dma_sample_bytes;
+	int num_bytes_to_end_of_buffer = dma_size - current_byte;
+
+	int bytes1 = (num_bytes < num_bytes_to_end_of_buffer)
+		? num_bytes
+		: num_bytes_to_end_of_buffer;
+
+	Q_memcpy(stream, shm->buffer + current_byte, bytes1);
+	dma_pos += (bytes1 / dma_sample_bytes);
+
+	if (bytes1 < num_bytes)
+	{
+		int bytes2 = num_bytes - bytes1;
+		Q_memcpy(stream + bytes1, shm->buffer, bytes2);
+		dma_pos = (bytes2 / dma_sample_bytes);
 	}
 }
 
 qboolean SNDDMA_Init(void)
 {
-	SDL_AudioSpec desired, obtained;
+	SDL_AudioSpec desired = { 0 }, obtained = { 0 };
 
 	snd_inited = 0;
 
@@ -78,18 +103,21 @@ qboolean SNDDMA_Init(void)
 			memcpy(&obtained, &desired, sizeof(desired));
 			break;
 	}
-	SDL_PauseAudio(0);
 
 	/* Fill the audio DMA information block */
-	shm = &the_shm;
+	shm = &sn;
 	shm->splitbuffer = 0;
 	shm->samplebits = (obtained.format & 0xFF);
 	shm->speed = obtained.freq;
 	shm->channels = obtained.channels;
-	shm->samples = obtained.samples*shm->channels;
-	shm->samplepos = 0;
+	shm->samples = next_power_of_two(shm->speed * shm->channels);
 	shm->submission_chunk = 1;
-	shm->buffer = NULL;
+
+	dma_sample_bytes = shm->samplebits / 8;
+	dma_size = (shm->samples * dma_sample_bytes);
+	shm->buffer = dma_buffer = calloc(1, dma_size);
+
+	SDL_PauseAudio(0);
 
 	snd_inited = 1;
 	return 1;
@@ -97,15 +125,30 @@ qboolean SNDDMA_Init(void)
 
 int SNDDMA_GetDMAPos(void)
 {
-	return shm->samplepos;
+	return dma_pos;
 }
 
 void SNDDMA_Shutdown(void)
 {
 	if (snd_inited)
 	{
+		SDL_PauseAudio(1);
 		SDL_CloseAudio();
+
+		free(dma_buffer);
+		dma_size = dma_pos = 0;
+
 		snd_inited = 0;
 	}
+}
+
+void SNDDMA_BeginPainting(void)
+{
+	SDL_LockAudio();
+}
+
+void SNDDMA_Submit(void)
+{
+	SDL_UnlockAudio();
 }
 
