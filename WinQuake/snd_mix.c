@@ -35,7 +35,7 @@ short	*snd_out;
 
 void Snd_WriteLinearBlastStereo16 (void);
 
-#if	!(id386 || idarm)
+#if	!id386
 void Snd_WriteLinearBlastStereo16 (void)
 {
 	int		i;
@@ -341,7 +341,7 @@ void SND_InitScaletable (void)
 }
 
 
-#if	!(id386 || idarm)
+#if	!id386
 
 void SND_PaintChannelFrom8 (channel_t *ch, sfxcache_t *sc, int count)
 {

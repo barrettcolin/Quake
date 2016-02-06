@@ -385,7 +385,7 @@ void D_DrawSpans8 (espan_t *pspan)
 #endif
 
 
-#if	!id386
+#if	!(id386 || idarm)
 
 /*
 =============

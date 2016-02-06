@@ -73,7 +73,7 @@ am__objects_1 = snd_mixa.$(OBJEXT) sys_dosa.$(OBJEXT) dosasm.$(OBJEXT) \
 	r_edgea.$(OBJEXT) r_varsa.$(OBJEXT) surf16.$(OBJEXT) \
 	surf8.$(OBJEXT) worlda.$(OBJEXT)
 am__objects_2 = d_vars.$(OBJEXT) nonintel.$(OBJEXT) \
-	snd_mixa_armv6.$(OBJEXT)
+	d_draw16_armv6.$(OBJEXT)
 am_sdlquake_OBJECTS = cd_sdl.$(OBJEXT) chase.$(OBJEXT) \
 	cl_demo.$(OBJEXT) cl_input.$(OBJEXT) cl_main.$(OBJEXT) \
 	cl_parse.$(OBJEXT) cl_tent.$(OBJEXT) cmd.$(OBJEXT) \
@@ -383,7 +383,7 @@ X86_SRCS = \
 NONX86_SRCS = \
 	d_vars.c		\
 	nonintel.c		\
-	armv6/snd_mixa_armv6.S
+	armv6/d_draw16_armv6.S
 
 NULL_SRCS = \
 	cd_null.c		\
@@ -610,6 +610,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/d_copy.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/d_draw.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/d_draw16.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/d_draw16_armv6.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/d_edge.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/d_fill.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/d_init.Po@am__quote@
@@ -672,7 +673,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/snd_mem.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/snd_mix.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/snd_mixa.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/snd_mixa_armv6.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/snd_sdl.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/surf16.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/surf8.Po@am__quote@
@@ -703,19 +703,19 @@ distclean-compile:
 @AMDEP_TRUE@@am__fastdepCCAS_FALSE@	DEPDIR=$(DEPDIR) $(CCASDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCCAS_FALSE@	$(CPPASCOMPILE) -c -o $@ `$(CYGPATH_W) '$<'`
 
-snd_mixa_armv6.o: armv6/snd_mixa_armv6.S
-@am__fastdepCCAS_TRUE@	$(CCAS) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CCASFLAGS) $(CCASFLAGS) -MT snd_mixa_armv6.o -MD -MP -MF $(DEPDIR)/snd_mixa_armv6.Tpo -c -o snd_mixa_armv6.o `test -f 'armv6/snd_mixa_armv6.S' || echo '$(srcdir)/'`armv6/snd_mixa_armv6.S
-@am__fastdepCCAS_TRUE@	$(am__mv) $(DEPDIR)/snd_mixa_armv6.Tpo $(DEPDIR)/snd_mixa_armv6.Po
-@AMDEP_TRUE@@am__fastdepCCAS_FALSE@	source='armv6/snd_mixa_armv6.S' object='snd_mixa_armv6.o' libtool=no @AMDEPBACKSLASH@
+d_draw16_armv6.o: armv6/d_draw16_armv6.S
+@am__fastdepCCAS_TRUE@	$(CCAS) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CCASFLAGS) $(CCASFLAGS) -MT d_draw16_armv6.o -MD -MP -MF $(DEPDIR)/d_draw16_armv6.Tpo -c -o d_draw16_armv6.o `test -f 'armv6/d_draw16_armv6.S' || echo '$(srcdir)/'`armv6/d_draw16_armv6.S
+@am__fastdepCCAS_TRUE@	$(am__mv) $(DEPDIR)/d_draw16_armv6.Tpo $(DEPDIR)/d_draw16_armv6.Po
+@AMDEP_TRUE@@am__fastdepCCAS_FALSE@	source='armv6/d_draw16_armv6.S' object='d_draw16_armv6.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCCAS_FALSE@	DEPDIR=$(DEPDIR) $(CCASDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCCAS_FALSE@	$(CCAS) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CCASFLAGS) $(CCASFLAGS) -c -o snd_mixa_armv6.o `test -f 'armv6/snd_mixa_armv6.S' || echo '$(srcdir)/'`armv6/snd_mixa_armv6.S
+@am__fastdepCCAS_FALSE@	$(CCAS) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CCASFLAGS) $(CCASFLAGS) -c -o d_draw16_armv6.o `test -f 'armv6/d_draw16_armv6.S' || echo '$(srcdir)/'`armv6/d_draw16_armv6.S
 
-snd_mixa_armv6.obj: armv6/snd_mixa_armv6.S
-@am__fastdepCCAS_TRUE@	$(CCAS) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CCASFLAGS) $(CCASFLAGS) -MT snd_mixa_armv6.obj -MD -MP -MF $(DEPDIR)/snd_mixa_armv6.Tpo -c -o snd_mixa_armv6.obj `if test -f 'armv6/snd_mixa_armv6.S'; then $(CYGPATH_W) 'armv6/snd_mixa_armv6.S'; else $(CYGPATH_W) '$(srcdir)/armv6/snd_mixa_armv6.S'; fi`
-@am__fastdepCCAS_TRUE@	$(am__mv) $(DEPDIR)/snd_mixa_armv6.Tpo $(DEPDIR)/snd_mixa_armv6.Po
-@AMDEP_TRUE@@am__fastdepCCAS_FALSE@	source='armv6/snd_mixa_armv6.S' object='snd_mixa_armv6.obj' libtool=no @AMDEPBACKSLASH@
+d_draw16_armv6.obj: armv6/d_draw16_armv6.S
+@am__fastdepCCAS_TRUE@	$(CCAS) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CCASFLAGS) $(CCASFLAGS) -MT d_draw16_armv6.obj -MD -MP -MF $(DEPDIR)/d_draw16_armv6.Tpo -c -o d_draw16_armv6.obj `if test -f 'armv6/d_draw16_armv6.S'; then $(CYGPATH_W) 'armv6/d_draw16_armv6.S'; else $(CYGPATH_W) '$(srcdir)/armv6/d_draw16_armv6.S'; fi`
+@am__fastdepCCAS_TRUE@	$(am__mv) $(DEPDIR)/d_draw16_armv6.Tpo $(DEPDIR)/d_draw16_armv6.Po
+@AMDEP_TRUE@@am__fastdepCCAS_FALSE@	source='armv6/d_draw16_armv6.S' object='d_draw16_armv6.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCCAS_FALSE@	DEPDIR=$(DEPDIR) $(CCASDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCCAS_FALSE@	$(CCAS) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CCASFLAGS) $(CCASFLAGS) -c -o snd_mixa_armv6.obj `if test -f 'armv6/snd_mixa_armv6.S'; then $(CYGPATH_W) 'armv6/snd_mixa_armv6.S'; else $(CYGPATH_W) '$(srcdir)/armv6/snd_mixa_armv6.S'; fi`
+@am__fastdepCCAS_FALSE@	$(CCAS) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CCASFLAGS) $(CCASFLAGS) -c -o d_draw16_armv6.obj `if test -f 'armv6/d_draw16_armv6.S'; then $(CYGPATH_W) 'armv6/d_draw16_armv6.S'; else $(CYGPATH_W) '$(srcdir)/armv6/d_draw16_armv6.S'; fi`
 
 .c.o:
 @am__fastdepCC_TRUE@	$(COMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<

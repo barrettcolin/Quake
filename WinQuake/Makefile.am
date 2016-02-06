@@ -160,7 +160,7 @@ X86_SRCS =			\
 NONX86_SRCS =			\
 	d_vars.c		\
 	nonintel.c		\
-	armv6/snd_mixa_armv6.S
+	armv6/d_draw16_armv6.S
 
 NULL_SRCS =			\
 	cd_null.c		\
