@@ -65,13 +65,13 @@ CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
-am__objects_1 = snd_mixa.$(OBJEXT) dosasm.$(OBJEXT) d_copy.$(OBJEXT) \
-	d_draw.$(OBJEXT) d_draw16.$(OBJEXT) d_parta.$(OBJEXT) \
-	d_polysa.$(OBJEXT) d_scana.$(OBJEXT) d_spr8.$(OBJEXT) \
-	d_varsa.$(OBJEXT) math.$(OBJEXT) r_aclipa.$(OBJEXT) \
-	r_aliasa.$(OBJEXT) r_drawa.$(OBJEXT) r_edgea.$(OBJEXT) \
-	r_varsa.$(OBJEXT) surf16.$(OBJEXT) surf8.$(OBJEXT) \
-	worlda.$(OBJEXT)
+am__objects_1 = snd_mixa.$(OBJEXT) sys_dosa.$(OBJEXT) dosasm.$(OBJEXT) \
+	d_copy.$(OBJEXT) d_draw.$(OBJEXT) d_draw16.$(OBJEXT) \
+	d_parta.$(OBJEXT) d_polysa.$(OBJEXT) d_scana.$(OBJEXT) \
+	d_spr8.$(OBJEXT) d_varsa.$(OBJEXT) math.$(OBJEXT) \
+	r_aclipa.$(OBJEXT) r_aliasa.$(OBJEXT) r_drawa.$(OBJEXT) \
+	r_edgea.$(OBJEXT) r_varsa.$(OBJEXT) surf16.$(OBJEXT) \
+	surf8.$(OBJEXT) worlda.$(OBJEXT)
 am__objects_2 = d_vars.$(OBJEXT) nonintel.$(OBJEXT) \
 	snd_mixa_armv6.$(OBJEXT)
 am_sdlquake_OBJECTS = cd_sdl.$(OBJEXT) chase.$(OBJEXT) \
@@ -360,6 +360,7 @@ sdlquake_SOURCES = \
 
 X86_SRCS = \
 	snd_mixa.S		\
+	sys_dosa.S		\
 	dosasm.S		\
 	d_copy.S		\
 	d_draw.S		\
@@ -382,7 +383,7 @@ X86_SRCS = \
 NONX86_SRCS = \
 	d_vars.c		\
 	nonintel.c		\
-	snd_mixa_armv6.S
+	armv6/snd_mixa_armv6.S
 
 NULL_SRCS = \
 	cd_null.c		\
@@ -679,6 +680,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/sv_move.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/sv_phys.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/sv_user.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/sys_dosa.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/sys_sdl.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/vid_sdl.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/view.Po@am__quote@
@@ -700,6 +702,20 @@ distclean-compile:
 @AMDEP_TRUE@@am__fastdepCCAS_FALSE@	source='$<' object='$@' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCCAS_FALSE@	DEPDIR=$(DEPDIR) $(CCASDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCCAS_FALSE@	$(CPPASCOMPILE) -c -o $@ `$(CYGPATH_W) '$<'`
+
+snd_mixa_armv6.o: armv6/snd_mixa_armv6.S
+@am__fastdepCCAS_TRUE@	$(CCAS) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CCASFLAGS) $(CCASFLAGS) -MT snd_mixa_armv6.o -MD -MP -MF $(DEPDIR)/snd_mixa_armv6.Tpo -c -o snd_mixa_armv6.o `test -f 'armv6/snd_mixa_armv6.S' || echo '$(srcdir)/'`armv6/snd_mixa_armv6.S
+@am__fastdepCCAS_TRUE@	$(am__mv) $(DEPDIR)/snd_mixa_armv6.Tpo $(DEPDIR)/snd_mixa_armv6.Po
+@AMDEP_TRUE@@am__fastdepCCAS_FALSE@	source='armv6/snd_mixa_armv6.S' object='snd_mixa_armv6.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCCAS_FALSE@	DEPDIR=$(DEPDIR) $(CCASDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCCAS_FALSE@	$(CCAS) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CCASFLAGS) $(CCASFLAGS) -c -o snd_mixa_armv6.o `test -f 'armv6/snd_mixa_armv6.S' || echo '$(srcdir)/'`armv6/snd_mixa_armv6.S
+
+snd_mixa_armv6.obj: armv6/snd_mixa_armv6.S
+@am__fastdepCCAS_TRUE@	$(CCAS) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CCASFLAGS) $(CCASFLAGS) -MT snd_mixa_armv6.obj -MD -MP -MF $(DEPDIR)/snd_mixa_armv6.Tpo -c -o snd_mixa_armv6.obj `if test -f 'armv6/snd_mixa_armv6.S'; then $(CYGPATH_W) 'armv6/snd_mixa_armv6.S'; else $(CYGPATH_W) '$(srcdir)/armv6/snd_mixa_armv6.S'; fi`
+@am__fastdepCCAS_TRUE@	$(am__mv) $(DEPDIR)/snd_mixa_armv6.Tpo $(DEPDIR)/snd_mixa_armv6.Po
+@AMDEP_TRUE@@am__fastdepCCAS_FALSE@	source='armv6/snd_mixa_armv6.S' object='snd_mixa_armv6.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCCAS_FALSE@	DEPDIR=$(DEPDIR) $(CCASDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCCAS_FALSE@	$(CCAS) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CCASFLAGS) $(CCASFLAGS) -c -o snd_mixa_armv6.obj `if test -f 'armv6/snd_mixa_armv6.S'; then $(CYGPATH_W) 'armv6/snd_mixa_armv6.S'; else $(CYGPATH_W) '$(srcdir)/armv6/snd_mixa_armv6.S'; fi`
 
 .c.o:
 @am__fastdepCC_TRUE@	$(COMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<

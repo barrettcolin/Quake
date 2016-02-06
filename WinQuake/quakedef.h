@@ -69,8 +69,10 @@ void	VID_UnlockBuffer (void);
 #define id386	1
 #else
 #define id386	0
+#endif
+
 // idarm
-#elif defined(__arm__)
+#if defined(__arm__)
 #define idarm	1
 #else
 #define idarm	0
