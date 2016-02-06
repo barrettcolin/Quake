@@ -65,14 +65,15 @@ CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
-am__objects_1 = snd_mixa.$(OBJEXT) sys_dosa.$(OBJEXT) dosasm.$(OBJEXT) \
-	d_copy.$(OBJEXT) d_draw.$(OBJEXT) d_draw16.$(OBJEXT) \
-	d_parta.$(OBJEXT) d_polysa.$(OBJEXT) d_scana.$(OBJEXT) \
-	d_spr8.$(OBJEXT) d_varsa.$(OBJEXT) math.$(OBJEXT) \
-	r_aclipa.$(OBJEXT) r_aliasa.$(OBJEXT) r_drawa.$(OBJEXT) \
-	r_edgea.$(OBJEXT) r_varsa.$(OBJEXT) surf16.$(OBJEXT) \
-	surf8.$(OBJEXT) worlda.$(OBJEXT)
-am__objects_2 = d_vars.$(OBJEXT) nonintel.$(OBJEXT)
+am__objects_1 = snd_mixa.$(OBJEXT) dosasm.$(OBJEXT) d_copy.$(OBJEXT) \
+	d_draw.$(OBJEXT) d_draw16.$(OBJEXT) d_parta.$(OBJEXT) \
+	d_polysa.$(OBJEXT) d_scana.$(OBJEXT) d_spr8.$(OBJEXT) \
+	d_varsa.$(OBJEXT) math.$(OBJEXT) r_aclipa.$(OBJEXT) \
+	r_aliasa.$(OBJEXT) r_drawa.$(OBJEXT) r_edgea.$(OBJEXT) \
+	r_varsa.$(OBJEXT) surf16.$(OBJEXT) surf8.$(OBJEXT) \
+	worlda.$(OBJEXT)
+am__objects_2 = d_vars.$(OBJEXT) nonintel.$(OBJEXT) \
+	snd_mixa_armv6.$(OBJEXT)
 am_sdlquake_OBJECTS = cd_sdl.$(OBJEXT) chase.$(OBJEXT) \
 	cl_demo.$(OBJEXT) cl_input.$(OBJEXT) cl_main.$(OBJEXT) \
 	cl_parse.$(OBJEXT) cl_tent.$(OBJEXT) cmd.$(OBJEXT) \
@@ -359,7 +360,6 @@ sdlquake_SOURCES = \
 
 X86_SRCS = \
 	snd_mixa.S		\
-	sys_dosa.S		\
 	dosasm.S		\
 	d_copy.S		\
 	d_draw.S		\
@@ -381,7 +381,8 @@ X86_SRCS = \
 
 NONX86_SRCS = \
 	d_vars.c		\
-	nonintel.c
+	nonintel.c		\
+	snd_mixa_armv6.S
 
 NULL_SRCS = \
 	cd_null.c		\
@@ -670,6 +671,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/snd_mem.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/snd_mix.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/snd_mixa.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/snd_mixa_armv6.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/snd_sdl.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/surf16.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/surf8.Po@am__quote@
@@ -677,7 +679,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/sv_move.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/sv_phys.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/sv_user.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/sys_dosa.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/sys_sdl.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/vid_sdl.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/view.Po@am__quote@

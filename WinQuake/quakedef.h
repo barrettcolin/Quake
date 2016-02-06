@@ -62,10 +62,20 @@ void	VID_UnlockBuffer (void);
 
 #endif
 
-#if defined(__i386__) && defined(USE_ASM)
+#if defined(USE_ASM)
+
+// id386
+#if defined(__i386__)
 #define id386	1
 #else
 #define id386	0
+// idarm
+#elif defined(__arm__)
+#define idarm	1
+#else
+#define idarm	0
+#endif
+
 #endif
 
 #if id386

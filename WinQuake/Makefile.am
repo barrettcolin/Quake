@@ -137,7 +137,6 @@ sdlquake_SOURCES =		\
 
 X86_SRCS =			\
 	snd_mixa.S		\
-	sys_dosa.S		\
 	dosasm.S		\
 	d_copy.S		\
 	d_draw.S		\
@@ -159,8 +158,8 @@ X86_SRCS =			\
 
 NONX86_SRCS =			\
 	d_vars.c		\
-	nonintel.c
-
+	nonintel.c		\
+	snd_mixa_armv6.S
 
 NULL_SRCS =			\
 	cd_null.c		\
