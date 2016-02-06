@@ -3731,7 +3731,7 @@ esac
 
 
 
-SDL_VERSION=1.0.1
+SDL_VERSION=1.2.15
 
 
 # Check whether --with-sdl-prefix was given.
